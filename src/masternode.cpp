@@ -322,6 +322,22 @@ CAmount CMasternode::GetMasternodeNodeCollateral(int nHeight)
     if (nHeight <= 56455) { 
         return 1000 * COIN;
     } 
+    else if (nHeight > 56455) { 
+        return 1000 * COIN;
+    } 
+    else if (nHeight > 150000) { 
+        return 2000 * COIN;
+    } 
+    else if (nHeight > 200000) { 
+        return 4000 * COIN;
+    } 
+    else if (nHeight > 300000) { 
+        return 8000 * COIN;
+    } 
+    else if (nHeight > 400000) { 
+        return 10000 * COIN;
+    } 
+    
     return 1000 * COIN;
 }
 
@@ -336,35 +352,30 @@ CAmount CMasternode::GetBlockValue(int nHeight)
     CAmount nSubsidy;
 
     if (nHeight == 1) {
-        nSubsidy = 200000 * COIN; //! Premine
+        nSubsidy = 200000 * COIN; 
     }
-    else if (nHeight <= 1000) {  // Mining phase for mainnet
+    else if (nHeight <= 1000) { 
         nSubsidy = 1 * COIN;
     }
-    else if (nHeight <= 200000) { // Old blockchain block 1400000
+    else if (nHeight <= 150000) { 
         nSubsidy = 10 * COIN;
     }
-    else if (nHeight <= 400000) { // Old blockchain block 1500000
-        nSubsidy = 7.5 * COIN;
+    else if (nHeight <= 200000) { 
+        nSubsidy = 10 * COIN;
     }
-    else if (nHeight <= 600000) { // Old blockchain block 1600000
-        nSubsidy = 5.625 * COIN;
+    else if (nHeight <= 300000) { 
+        nSubsidy = 8 * COIN;
     }
-    else if (nHeight <= 800000) { // Old blockchain block 1700000
-        nSubsidy = 4.218 * COIN;
+    else if (nHeight <= 400000) { 
+        nSubsidy = 7 * COIN;
     }
-    else if (nHeight <= 1000000) { // Old blockchain block 1800000
-        nSubsidy = 3.164 * COIN;
+    else if (nHeight <= 500000) { 
+        nSubsidy = 5 * COIN;
     }
-    else if (nHeight <= 1200000) { // Old blockchain block 1900000
-        nSubsidy = 2.373 * COIN;
+    else if (nHeight > 500000) { 
+        nSubsidy = 5 * COIN;
     }
-    else if (nHeight <= 1400000) { // Old blockchain block 2000000
-        nSubsidy = 1.779 * COIN;
-    }
-    else if (nHeight > 1600000) { // Old blockchain after block 2000000
-        nSubsidy = 1.334 * COIN;
-    }
+    
 
     if(nMoneySupply + nSubsidy > maxMoneyOut) {
         return nMoneySupply + nSubsidy - maxMoneyOut;
