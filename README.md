@@ -1,5 +1,9 @@
 # solidus-coin
 
+For all SLDS owners we has made available a SLDS by UCCoin Discord channel here: 
+https://discord.gg/px3uga5Dr7
+
+
 Name : Solidus  
 Ticker: SLDS  
 Max supply: 10,000,000  
